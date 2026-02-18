@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<style>
+:root {
+    --bg1: #0f0f14;
+    --bg2: #1a1a22;
+    --text: #ffffff;
+    --sub: #bfbfbf;
+    --spotify: #1DB954;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, var(--bg1), var(--bg2));
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.container {
+    width: 100%;
+    max-width: 650px;
+    text-align: center;
+    z-index: 2;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 6vw, 3.8rem);
+    letter-spacing: 2px;
+    color: var(--text);
+    margin-bottom: 15px;
+    line-height: 1.2;
+    text-shadow:
+        0 0 10px rgba(255,255,255,0.4),
+        0 0 20px rgba(255,255,255,0.3),
+        0 0 40px rgba(255,255,255,0.2);
+}
+
+.subtitle {
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+    color: var(--sub);
+    margin-bottom: 40px;
+}
+
+/* BOTÃO SPOTIFY */
+.spotify-btn {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 24px;
+    border-radius: 50px;
+    border: none;
+    background: var(--spotify);
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: clamp(0.9rem, 3vw, 1rem);
+    transition: 0.3s ease;
+}
+
+.spotify-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(29,185,84,0.6);
+}
+
+/* Ícone Spotify bonito */
+.spotify-icon {
+    width: 22px;
+    height: 22px;
+    fill: white;
+}
+
+/* CORAÇÕES CAINDO */
+.heart {
+    position: absolute;
+    top: -10px;
+    color: white;
+    opacity: 0.12;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10px); opacity: 0; }
+    10% { opacity: 0.15; }
+    100% { transform: translateY(110vh); opacity: 0; }
+}
+
+@media (min-width: 768px) {
+    .spotify-btn {
+        max-width: 340px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>for that person who has become special</h1>
+    <p class="subtitle">hope you like it!!!</p>
+
+    <!-- COLOQUE SUA PLAYLIST AQUI -->
+    <a class="spotify-btn" href="https://open.spotify.com/playlist/0WjwZ5Ta6ewtEhJQ6nykQK?si=736c6cc916244952" target="_blank">
+        <img src="social.png" width="22">
+        CLIQUE AQUI
+    </a>
+</div>
+
+<script>
+function createHearts() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "♥";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 22 + 10) + "px";
+    heart.style.animationDuration = (Math.random() * 6 + 6) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 12000);
+}
+
+setInterval(createHearts, 250);
+</script>
+
+</body>
+</html>
